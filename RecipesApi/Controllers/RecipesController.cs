@@ -7,13 +7,6 @@ using System.Linq;
 
 namespace RecipesApi.Controllers
 {
-    // TODO
-    // 1 ДТО для рецепта
-    // 2 Получение рецепта по ID 
-    // 3 Заполнить доменный объект Recipe всеми необходимыми полями
-    // 4 Поправить все замечания по пулреквесту на фронтенде
-
-
     [Route("api/[controller]")]
     [ApiController]
     public class RecipesController : ControllerBase
@@ -28,11 +21,11 @@ namespace RecipesApi.Controllers
         [HttpGet]
         public RecipeDto[] Get()
         {
-            return _recipeService.GetAll().Select( r => new RecipeDto { Name = r.Name, Description = r.Description, Photo = r.Photo, Persons = r.Persons, CookingTime = r.CookingTime, Tags = r.Tags }).ToArray();
+            return _recipeService.GetAll().Select( r => new RecipeDto { Id = r.Id, Name = r.Name, Description = r.Description, Photo = r.Photo, Persons = r.Persons, CookingTime = r.CookingTime }).ToArray();
         }
 
         [HttpGet("{id}")]
-        public Recipe GetById(int id)
+        public RecipeDto GetById(int id)
         {
             return _recipeService.GetById(id);
         }

@@ -14,8 +14,9 @@ namespace Application.Recipe
         public List<Ingredient> Ingredients { get; set; }
         public List<Step> Steps { get; set; }
 
-        public Recipe(string name, string description, string photo, int persons, int cookingTime, List<Tag> tags)
+        public Recipe(long id, string name, string description, string photo, int persons, int cookingTime, List<Tag> tags)
         {
+            Id = id;
             Name = name;
             Description = description;
             Photo = photo;

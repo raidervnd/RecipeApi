@@ -1,8 +1,13 @@
-﻿namespace RecipesApi.Dto
+﻿using System.Runtime.Serialization;
+
+namespace RecipesApi.Dto
 {
+    [DataContract]
     public class TagDto
     {
-        public int Id { get; set; }
+        [DataMember(Name = "id")]
+        public long Id { get; set; }
+        [DataMember(Name = "title")]
         public string Title { get; set; }
     }
 }
