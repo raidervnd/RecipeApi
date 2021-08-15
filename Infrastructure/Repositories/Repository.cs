@@ -7,23 +7,22 @@ namespace Infrastructure.Repositories
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly DbContext _dbContext;
-
         protected DbSet<T> Entities => _dbContext.Set<T>();
-
-
+        public Repository( DbContext dbContext )
+        {
+            _dbContext = dbContext;
+        }
         public void Add(T entity)
         {
-            throw new System.NotImplementedException();
+            _dbContext.Add(entity);
         }
-
         public void AddRange(List<T> entities)
         {
-            throw new System.NotImplementedException();
+            _dbContext.AddRange(entities);
         }
-
         public void Remove(T entity)
         {
-            throw new System.NotImplementedException();
+            _dbContext.Remove(entity);
         }
     }
 }

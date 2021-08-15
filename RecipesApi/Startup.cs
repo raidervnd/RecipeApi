@@ -1,10 +1,15 @@
+using Application.Abstraction;
 using Application.Recipe;
+using Infrastructure.Common;
+using Infrastructure.Context;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RecipesApi.Convertes;
 
 namespace RecipesApi
 {
@@ -22,7 +27,12 @@ namespace RecipesApi
         {
             services.AddControllers();
             services.AddScoped<IRecipeService, RecipeService>();
-            services.AddSingleton<IRecipeRepository, InMemoryRecipeRepository>();
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork<RecipesApiDbContext>>();
+            services.AddScoped<IRecipeDtoConverter, RecipeDtoConverter>();
+            services.AddDbContext<RecipesApiDbContext>( c =>
+                c.UseSqlServer( Configuration.GetConnectionString( "DefaultConnection" ) )
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -14,9 +14,9 @@ namespace Infrastructure.Context
                 .AddJsonFile("appsettings.json");
 
             var config = builder.Build();
-            var connectionString = config.GetConnectionString("DbConnection");
+            var connectionString = config.GetConnectionString( "DefaultConnection" );
             var optionsBuilder = new DbContextOptionsBuilder<RecipesApiDbContext>();
-            optionsBuilder.UseSqlServer(connectionString, x => x.MigrationsAssembly("SqlServerConnection"));
+            optionsBuilder.UseSqlServer(connectionString);
 
             return new RecipesApiDbContext(optionsBuilder.Options);
         }

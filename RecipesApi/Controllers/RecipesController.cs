@@ -2,9 +2,8 @@
 using RecipesApi.Dto;
 using Application.Recipe;
 using System.Linq;
-using System.Collections.Generic;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using RecipesApi.Convertes;
+using Application.Abstraction;
 
 namespace RecipesApi.Controllers
 {
@@ -13,16 +12,23 @@ namespace RecipesApi.Controllers
     public class RecipesController : ControllerBase
     {
         private readonly IRecipeService _recipeService;
+        private readonly IRecipeDtoConverter _recipeDtoConverter;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public RecipesController(IRecipeService recipeService)
+        public RecipesController(
+            IRecipeService recipeService, 
+            IRecipeDtoConverter recipeDtoConverter,
+            IUnitOfWork unitOfWork)
         {
             _recipeService = recipeService;
+            _recipeDtoConverter = recipeDtoConverter;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public RecipeDto[] Get()
         {
-             return _recipeService.GetAll().Select( r => new RecipeDto { Id = r.Id, Name = r.Name, Description = r.Description, Photo = r.Photo, Persons = r.Persons, CookingTime = r.CookingTime }).ToArray();
+             return _recipeService.GetAll().Select(_recipeDtoConverter.ConvertToDto).ToArray();
         }
 
         [HttpGet("{id}")]
@@ -39,6 +45,8 @@ namespace RecipesApi.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            // ...
+            _unitOfWork.Commit();
         }
 
         // PUT api/<RecipesController>/5
