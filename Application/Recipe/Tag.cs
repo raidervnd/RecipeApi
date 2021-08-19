@@ -1,11 +1,14 @@
-﻿namespace Application.Recipe
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Application.Recipe
 {
     public class Tag
     {
+        public long Id { get; set; }
+        public long RecipeId { get; set; }
         public string Title { get; set; }
-        public Tag(string title)
-        {
-            Title = title;
-        }
+
+        [ForeignKey("RecipeId")]
+        public Recipe Recipe { get; set; }
     }
 }

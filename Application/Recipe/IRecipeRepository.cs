@@ -6,5 +6,6 @@ namespace Application.Recipe
     {
         public List<Recipe> GetAll();
         public Recipe GetById(int id);
+        public void AddRecipe(Recipe recipe);
     }
 }

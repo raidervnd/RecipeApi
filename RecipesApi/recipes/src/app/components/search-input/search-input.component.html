@@ -6,11 +6,7 @@
             <input type="submit" class="search-container__submit" value="Поиск">
         </div>
         <div class="search-container__nav">
-            <ul style="list-style-type: none; display: flex; padding: 0;">
-                <li *ngFor="let tag of Tags">
-                    <a class="nav-container__link" href="#"> {{tag.name}}</a>
-                </li>
-            </ul>
+            <a *ngFor="let tag of Tags" class="nav-container__link" href="#"> {{tag.name}}</a>
         </div>
     </div>
 </div>

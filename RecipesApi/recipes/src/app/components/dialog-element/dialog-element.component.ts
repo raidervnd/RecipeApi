@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {DialogContentComponent} from '../dialog-content/dialog-content.component';
+import {DialogOptionsComponent} from '../dialog-options/dialog-options.component';
 
 @Component({
   selector: 'app-dialog-element',
@@ -12,6 +12,6 @@ export class DialogElementComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog() {
-    this.dialog.open(DialogContentComponent);
+    this.dialog.open(DialogOptionsComponent);
   } 
 }

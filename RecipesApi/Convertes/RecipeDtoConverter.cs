@@ -12,12 +12,16 @@ namespace RecipesApi.Convertes
                 ? new Recipe
                 {
                     Id = recipeDto.Id,
-                    CookingTimeInMinutes = recipeDto.CookingTime,
+                    CookingTimeInMinutes = recipeDto.CookingTimeInMinutes,
                     Description = recipeDto.Description,
                     Name = recipeDto.Name,
                     Persons = recipeDto.Persons,
                     Photo = recipeDto.Photo,
-                    Steps = recipeDto.Steps.Select(ConvertStepFromDto).ToList()
+                    Likes = recipeDto.Likes,
+                    Saved = recipeDto.Saved,
+                    Steps = recipeDto.Steps?.Select(ConvertStepFromDto).ToList(),
+                    Tags = recipeDto.Tags?.Select(ConvertTagFromDto).ToList(),
+                    Ingredients = recipeDto.Ingredients?.Select(ConvertIngredientFromDto).ToList()
                 }
                 : null;
         }
@@ -27,12 +31,16 @@ namespace RecipesApi.Convertes
                  ? new RecipeDto
                  {
                      Id = recipe.Id,
-                     CookingTime = recipe.CookingTimeInMinutes,
+                     CookingTimeInMinutes = recipe.CookingTimeInMinutes,
                      Description = recipe.Description,
                      Name = recipe.Name,
                      Persons = recipe.Persons,
                      Photo = recipe.Photo,
-                     Steps = recipe.Steps.Select( ConvertStepToDto ).ToList()
+                     Likes = recipe.Likes,
+                     Saved = recipe.Saved,
+                     Steps = recipe.Steps?.Select( ConvertStepToDto ).ToList(),
+                     Tags = recipe.Tags?.Select( ConvertTagToDto ).ToList(), 
+                     Ingredients = recipe.Ingredients?.Select(ConvertIngredientToDto).ToList()
                  }
                  : null;
         }
@@ -59,6 +67,52 @@ namespace RecipesApi.Convertes
                     Description = step.Description,
                     Num = step.Num,
                     RecipeId = step.RecipeId
+                }
+                : null;
+        }
+        private Tag ConvertTagFromDto(TagDto tagDto)
+        {
+            return tagDto != null
+                ? new Tag
+                {
+                    Id = tagDto.Id,
+                    RecipeId = tagDto.RecipeId,
+                    Title = tagDto.Title
+                }
+                : null;
+        }
+        private TagDto ConvertTagToDto(Tag tag)
+        {
+            return tag != null
+                ? new TagDto
+                {
+                    Id = tag.Id,
+                    RecipeId = tag.RecipeId,
+                    Title = tag.Title
+                }
+                : null;
+        }
+        private Ingredient ConvertIngredientFromDto(IngredientDto ingredientDto)
+        {
+            return ingredientDto != null
+                ? new Ingredient
+                {
+                    Id = ingredientDto.Id,
+                    Description = ingredientDto.Description,
+                    Title = ingredientDto.Title,
+                    RecipeId = ingredientDto.RecipeId
+                }
+                : null;
+        }
+        private IngredientDto ConvertIngredientToDto(Ingredient ingredient)
+        {
+            return ingredient != null
+                ? new IngredientDto
+                {
+                    Id = ingredient.Id,
+                    Description = ingredient.Description,
+                    Title = ingredient.Title,
+                    RecipeId = ingredient.RecipeId
                 }
                 : null;
         }

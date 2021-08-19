@@ -11,6 +11,11 @@ namespace Application.Recipe
             _recipeRepository = recipeRepository;
         }
 
+        public void AddRecipe(Recipe recipe)
+        {
+            _recipeRepository.AddRecipe(recipe);
+        }
+
         public List<Recipe> GetAll()
         {
            return _recipeRepository.GetAll();

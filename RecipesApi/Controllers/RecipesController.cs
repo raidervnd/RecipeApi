@@ -35,17 +35,14 @@ namespace RecipesApi.Controllers
         public RecipeDto GetById(int id)
         {
             var recipe = _recipeService.GetById(id);
-            return new RecipeDto
-            {
-                Id = recipe.Id
-            };
+            return _recipeDtoConverter.ConvertToDto(recipe);
         }
 
         // POST api/<RecipesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void AddRecipe(Recipe recipe)
         {
-            // ...
+            _recipeService.AddRecipe(recipe);
             _unitOfWork.Commit();
         }
 
