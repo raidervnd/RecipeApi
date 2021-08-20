@@ -4,7 +4,7 @@
             <button mat-button class="back-button" routerLinkActive="active" routerLink="/">Назад</button>
             <h1 class="title">Добавить новый рецепт</h1>
         </div>
-        <button mat-button class="function-button">Опубликовать</button>
+        <button mat-button (click)="sentRecipe()" routerLink="recipes" routerLinkActive="active" class="function-button">Опубликовать</button>
     </div>
-    <app-form-new-recipe></app-form-new-recipe>
+    <app-form-new-recipe (valueChange)="onSubmit($event)"></app-form-new-recipe>
 </div>

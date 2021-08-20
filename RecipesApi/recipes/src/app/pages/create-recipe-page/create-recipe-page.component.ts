@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RecipeDto } from 'src/app/dto/recipe.dto';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
   selector: 'app-create-recipe-page',
@@ -6,11 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-recipe-page.component.css']
 })
 export class CreateRecipePageComponent implements OnInit {
+  public recipe!: RecipeDto;
 
-  constructor() {}
+  constructor(private httpService: RecipeService, private router: Router) {}
 
   ngOnInit(): void {
   }
 
-  sentRecipe(){}
+  async sentRecipe(){
+    this.onSubmit(this.recipe);
+    await this.httpService.addRecipe(this.recipe);
+    this.router.navigate(['/recipes']);
+  }
+  onSubmit(recipe: RecipeDto) {
+    this.recipe = recipe;
+  }
 }

@@ -132,14 +132,6 @@
     height: 62px;
 }
 
-.mat-form-field-underline,
-.mat-form-field-subscript-wrapper,
-mat-form-field-underline,
-mat-form-field-subscript-wrapper
-{
-    display: none!important;
-}
-
 .mat-form-field
 {
     width: 100%;
@@ -156,4 +148,10 @@ mat-form-field-subscript-wrapper
     background-color: #fff;
     /* right: 75px;
     top: 55px; */
+}
+
+.img
+{
+    max-height: 430px;
+    max-width: 430px;
 }

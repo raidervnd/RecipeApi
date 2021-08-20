@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { RecipeDto } from 'src/app/dto/recipe.dto';
 import { TagDto } from 'src/app/dto/tag.dto';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
   selector: 'app-form-new-recipe',
@@ -16,21 +16,23 @@ export class FormNewRecipeComponent implements OnInit {
   public Ingredients: number[] = [1];
   public name!: string;
   public description!: string;
-  public persons!: string ;
-  public cookingTime!: string;
+  public persons!: number ;
+  public cookingTime!: number;
   public tags!: string;
   public newRecipe!: RecipeDto;
-
-  private _http: HttpClient;
+  public recipe!: RecipeDto;
+  public urlRecipe: string = "../../../assets/addphoto.png";
+  @Output() valueChange  = new EventEmitter<RecipeDto>();
+  public photo!: string | null;
   
-  constructor(public http: HttpClient) {
-    this._http = http;
+  constructor() {
   }
   ngOnInit(): void {
   }
-  async addRecipe(recipeDto: RecipeDto): Promise<void>{
-    await this._http.post<void>('/api/Recipes', recipeDto).toPromise()
-  }  
+
+  onSubmit() {
+    this.addRecipeDto();
+  }
 
   addStep() {
     this.Steps.push( this.Steps.length + 1);
@@ -55,26 +57,32 @@ export class FormNewRecipeComponent implements OnInit {
   async addRecipeDto() {
     let newtags: TagDto = {
       title: this.tags,
-      recipeId: 5
     };
      this.newRecipe = {
       name: this.name, 
       description: this.description,
-      photo: "Photo",
-      persons: parseInt(this.persons),
-      cookingTimeInMinutes: parseInt(this.cookingTime),
+      photo: this.url,
+      persons: this.persons,
+      cookingTimeInMinutes: this.cookingTime,
       likes: 0,
       saved: 0,
       tags: [newtags],
       steps: [],
       ingridients: []
     }
-    console.log(this.newRecipe);  
-    this.addRecipe(this.newRecipe);
+    console.log(this.newRecipe); 
+    this.valueChange.emit(this.newRecipe);
   }
   url: any;
-    onSelectFile(event: any) { 
-      this.url = event.target.files[0];
-      console.log(this.url);
+    onSelectFile(event: any) {
+      //Добавление изображения прямо в базу
+      if (event.target.files && event.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
+             this.url = event.target.result;
+             this.urlRecipe = this.url;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+      } 
     }
 }

@@ -1,4 +1,4 @@
 export interface TagDto {
-    recipeId: number| null;
+    //recipeId: number| null;
     title: string| null;
 }  

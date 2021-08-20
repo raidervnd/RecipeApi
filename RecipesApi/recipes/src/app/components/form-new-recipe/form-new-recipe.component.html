@@ -1,8 +1,7 @@
-<button (click)="addRecipeDto()">Submit</button>
 <div class="recipe-container">
     <div class="recipes-list-container">
         <label class="recipe-image">
-            <img src="../../../assets/addphoto.png" class="img">
+            <img src="{{urlRecipe}}" class="img">
             <input 
               type="file" 
               style="appearance: none;display: none;" 
@@ -13,23 +12,27 @@
               class="input-data"  
               type="text" 
               placeholder="Название рецепта"
-              [(ngModel)]="name">
+              [(ngModel)]="name"
+              (click)="onSubmit()" >
             <textarea 
               class="input-data description" 
               placeholder="Краткое описание рецепта (150 символов)"
-              [(ngModel)]="description"></textarea>
+              [(ngModel)]="description"
+              (click)="onSubmit()" ></textarea>
             <input 
               class="input-data" 
               type="text" 
               placeholder="Добавить теги"
-              [(ngModel)]="tags">
+              [(ngModel)]="tags"
+              (click)="onSubmit()" >
             <div class="info-container">
                 <div class="info-container__wrapper">
                     <input 
                       class="input-data info" 
                       type="text"
                       placeholder="Время готовки"
-                      [(ngModel)]="cookingTime">
+                      [(ngModel)]="cookingTime"
+                      (click)="onSubmit()" >
                     <div class="text">Минут</div>
                 </div>
                 <div class="info-container__wrapper">
@@ -37,7 +40,8 @@
                       class="input-data info" 
                       type="text"  
                       placeholder="Порций в блюде"
-                      [(ngModel)]="persons">
+                      [(ngModel)]="persons"
+                      (click)="onSubmit()" >
                     <div class="text">Персон</div>
                 </div>
             </div>
