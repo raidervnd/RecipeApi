@@ -19,22 +19,22 @@
               placeholder="Краткое описание рецепта (150 символов)"
               [(ngModel)]="newRecipe.description"
               (click)="onSubmit()"></textarea>
-              <div class="example-chip-list input-data" style="padding-left: 0; margin-bottom: 20px; padding-top: 13px;">
+              <div class="chip-list input-data">
                 <mat-chip-list #chipList aria-label="Fruit selection">
                   <mat-chip
-                    *ngFor="let fruit of fruits"
+                    *ngFor="let tag of tags"
                     [selectable]="selectable"
                     [removable]="removable"
-                    (removed)="remove(fruit)">
-                    {{fruit}}
+                    (removed)="remove(tag)">
+                    {{tag}}
                     <mat-icon matChipRemove *ngIf="removable"></mat-icon>
                   </mat-chip>
                   <input
                     class="input-data"
                     style="border: none; height: auto;"
                     placeholder="Добавить теги"
-                    #fruitInput
-                    [formControl]="fruitCtrl"
+                    #tagInput
+                    [formControl]="tagCtrl"
                     [matChipInputFor]="chipList"
                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                     (matChipInputTokenEnd)="add($event)">

@@ -298,3 +298,10 @@
 {
     display: none!important;
 }
+
+.chip-list
+{
+    padding-left: 0; 
+    margin-bottom: 20px; 
+    padding-top: 13px;
+}

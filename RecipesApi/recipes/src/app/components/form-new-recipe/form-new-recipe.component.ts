@@ -20,8 +20,8 @@ import { map, startWith } from 'rxjs/operators';
 
 export class FormNewRecipeComponent implements OnInit {
 
-  public Steps!: StepDto[];
-  public Ingredients!: IngridientDto[];
+  public Steps: StepDto[] = [];
+  public Ingredients: IngridientDto[] = [];
   public Tags: TagDto[] = [];
   public newRecipe!: RecipeDto;
   public url: any;
@@ -30,52 +30,50 @@ export class FormNewRecipeComponent implements OnInit {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruitCtrl = new FormControl();
+  tagCtrl = new FormControl();
   filteredFruits: Observable<string[]>;
-  fruits: string[] = [];
-  allFruits: string[] = [];
+  tags: string[] = [];
+  allTags: string[] = [];
 
-  @ViewChild('fruitInput')fruitInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('tagInput')tagInput!: ElementRef<HTMLInputElement>;
 
   constructor() {
-    this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
-        startWith(null),
-        map((fruit: string | null) => fruit ? this._filter(fruit) : this.allFruits.slice()));
+    this.filteredFruits = this.tagCtrl.valueChanges.pipe(
+      startWith(null),
+      map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
   }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our fruit
     if (value) {
-      this.fruits.push(value);
-      this.Tags = [{title: value}]
+      this.tags.push(value);
+      this.Tags.push({title: value});
     }
 
-    // Clear the input value
     event.chipInput!.clear();
 
-    this.fruitCtrl.setValue(null);
+    this.tagCtrl.setValue(null);
   }
 
-  remove(fruit: string): void {
-    const index = this.fruits.indexOf(fruit);
+  remove(tag: string): void {
+    const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.tags.splice(index, 1);
       this.Tags.splice(index, 1);
     }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.fruits.push(event.option.viewValue);
-    this.fruitInput.nativeElement.value = '';
-    this.fruitCtrl.setValue(null);
+    this.tags.push(event.option.viewValue);
+    this.tagInput.nativeElement.value = '';
+    this.tagCtrl.setValue(null);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.allFruits.filter(fruit => fruit.toLowerCase().includes(filterValue));
+    return this.allTags.filter(tag => tag.toLowerCase().includes(filterValue));
   }
   
   async ngOnInit(): Promise<void> {
