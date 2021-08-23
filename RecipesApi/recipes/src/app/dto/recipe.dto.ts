@@ -5,12 +5,12 @@ import { IngridientDto } from './ingredient.dto';
 export interface RecipeDto {
     name: string;
     description: string;
-    photo: string | null;
-    persons: number | null;
-    cookingTimeInMinutes: number | null;
-    likes: number | null;
-    saved: number | null;
-    tags: Array<TagDto> | null;
-    steps: Array<StepDto> | null;
-    ingridients: Array<IngridientDto> | null;
+    photo?: string;
+    persons?: number;
+    cookingTimeInMinutes?: number;
+    likes?: number;
+    saved?: number;
+    tags: Array<TagDto>;
+    steps: Array<StepDto>;
+    ingredients: Array<IngridientDto>;
 }

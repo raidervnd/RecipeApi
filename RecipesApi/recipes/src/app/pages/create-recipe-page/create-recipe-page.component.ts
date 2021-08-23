@@ -17,7 +17,6 @@ export class CreateRecipePageComponent implements OnInit {
   }
 
   async sentRecipe(){
-    this.onSubmit(this.recipe);
     await this.httpService.addRecipe(this.recipe);
     this.router.navigate(['/recipes']);
   }

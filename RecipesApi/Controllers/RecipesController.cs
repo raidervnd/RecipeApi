@@ -4,6 +4,7 @@ using Application.Recipe;
 using System.Linq;
 using RecipesApi.Convertes;
 using Application.Abstraction;
+using System.Collections.Generic;
 
 namespace RecipesApi.Controllers
 {
@@ -31,31 +32,17 @@ namespace RecipesApi.Controllers
              return _recipeService.GetAll().Select(_recipeDtoConverter.ConvertToDto).ToArray();
         }
 
-        [HttpGet("{id}")]
-        public RecipeDto GetById(int id)
+        [HttpGet("{searchText}")]
+        public IReadOnlyList<RecipeDto> FindRecipe(string searchText)
         {
-            var recipe = _recipeService.GetById(id);
-            return _recipeDtoConverter.ConvertToDto(recipe);
+            return _recipeService.FindRecipes(searchText).Select(_recipeDtoConverter.ConvertToDto).ToArray();
         }
 
-        // POST api/<RecipesController>
         [HttpPost]
         public void AddRecipe(Recipe recipe)
         {
             _recipeService.AddRecipe(recipe);
             _unitOfWork.Commit();
-        }
-
-        // PUT api/<RecipesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<RecipesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

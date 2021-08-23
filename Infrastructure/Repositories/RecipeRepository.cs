@@ -15,9 +15,15 @@ namespace Infrastructure.Repositories
         public void AddRecipe(Recipe recipe)
         {
             Entities.Add(recipe);
-                //.Include(r => r.Steps)
-                //.Include(r => r.Tags)
-                //.Include(r => r.Ingredients);
+        }
+
+        public IQueryable<Recipe> GetDetachedQuery()
+        {
+            return Entities
+                .Include(r => r.Steps)
+                .Include(r => r.Tags)
+                .Include(r => r.Ingredients)
+                .AsNoTracking();
         }
 
         public List<Recipe> GetAll()
@@ -35,7 +41,7 @@ namespace Infrastructure.Repositories
                 .Include( r => r.Steps )
                 .Include( r => r.Tags)
                 .Include( r => r.Ingredients)
-                .FirstOrDefault( r  => r.Id == id  );
+                .FirstOrDefault( r  => r.Id == id );
         }
     }
 }

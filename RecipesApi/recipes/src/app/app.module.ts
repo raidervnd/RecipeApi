@@ -17,14 +17,15 @@ import { DialogSignupComponent } from './components/dialog-signup/dialog-signup.
 import { CreateRecipePageComponent } from './pages/create-recipe-page/create-recipe-page.component';
 import { FormNewRecipeComponent } from './components/form-new-recipe/form-new-recipe.component';
 import { RecipeComponent } from './components/recipe/recipe.component';
-import { IngredientInputComponent } from './components/ingredient-input/ingredient-input.component';
-import { StepInputComponent } from './components/step-input/step-input.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { DialogOptionsComponent } from './components/dialog-options/dialog-options.component';
 import { RecipeService } from './services/recipe.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-
+import {MatChipsModule} from '@angular/material/chips';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,6 @@ import { FormsModule } from '@angular/forms';
     CreateRecipePageComponent,
     FormNewRecipeComponent,
     RecipeComponent,
-    IngredientInputComponent,
-    StepInputComponent,
     MainPageComponent,
     DialogOptionsComponent,
   ],
@@ -53,7 +52,11 @@ import { FormsModule } from '@angular/forms';
     NoopAnimationsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatChipsModule,
+    MatInputModule,
+    MatListModule,
+    ReactiveFormsModule,
   ],
   providers: [RecipeService],
   bootstrap: [AppComponent]

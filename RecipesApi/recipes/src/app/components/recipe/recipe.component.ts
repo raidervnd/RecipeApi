@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
+import { RecipeDto } from 'src/app/dto/recipe.dto';
 
 @Component({
   selector: 'app-recipe',
@@ -8,7 +9,7 @@ import { Input } from '@angular/core';
 })
 export class RecipeComponent implements OnInit {
 
-  @Input() Recipe: any[string];
+  @Input() Recipe!: RecipeDto;
 
   constructor() { }
 

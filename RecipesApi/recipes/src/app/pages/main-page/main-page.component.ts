@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOptionsComponent } from '../../components/dialog-options/dialog-options.component';
-import { Router } from '@angular/router';
-import { RecipeService } from '../../services/recipe.service';
 import { RecipeDto } from 'src/app/dto/recipe.dto';
 
 @Component({
@@ -25,13 +23,11 @@ export class MainPageComponent {
     { name: 'Рыба'},
   ]
 
-  constructor(public dialog: MatDialog, private router: Router, private httpService: RecipeService) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.httpService.getData().then((data: RecipeDto[]) => {
-      this.data = data;
-    });
   }
+
   openDialog() {
     this.dialog.open(DialogOptionsComponent);
   } 

@@ -17,4 +17,7 @@ export class RecipeService {
   async addRecipe(recipeDto: RecipeDto): Promise<void>{
     await this._http.post<void>('/api/Recipes', recipeDto).toPromise()
   }
+  async searchRecipe(recipe: string): Promise<any> {
+    return this._http.get<RecipeDto[]>('api/Recipes/' + recipe).toPromise();
+  }
 }

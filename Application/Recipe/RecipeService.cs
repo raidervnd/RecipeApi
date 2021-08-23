@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Application.Recipe
 {
@@ -24,6 +26,12 @@ namespace Application.Recipe
         public Recipe GetById(int id)
         {
             return _recipeRepository.GetById(id);
+        }
+
+        public IReadOnlyList<Recipe> FindRecipes(string searchText)
+        {
+            return _recipeRepository.GetDetachedQuery().Where(r => EF.Functions.Like(r.Name, "%" + searchText + "%")).ToList();
+
         }
     }
 }
