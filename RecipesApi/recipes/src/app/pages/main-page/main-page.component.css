@@ -18,9 +18,7 @@
 
 .nav-container__link
 {
-
-    margin-left: 5px;
-    margin-right: 20px;
+    margin: auto 20px auto 5px;
     width: 100px;
     display: inline-block;
     font: 400 18px/22px "Montserrat";
@@ -86,10 +84,8 @@
 
 .main-container__functions
 {
-    margin-bottom: 300px;
-    margin-top: 50px;
+    margin: 50px auto 300px auto;
 }
-
 .function-button
 {
     width: 276px;
@@ -105,12 +101,10 @@
     margin-right: 24px;
     position: relative;
 }
-
 .function-button:last-child
 {
     width: 216px;
 }
-
 .function-button:hover,
 .function-button:focus,
 .function-button:active
@@ -119,15 +113,13 @@
     color: #fff;
     outline: none;
 }
-
-.button
+.function-button_add-recipe
 {
     background-color: #FDB100;
     color: #fff;
     padding-left: 38px;
 }
-
-.button::before
+.function-button_add-recipe::before
 {
     content: url("../../../assets/plus.svg");
     position: absolute;
@@ -135,7 +127,6 @@
     height: 14px;
     left: 39px;
 }
-
 .photo
 {
     position: absolute;
@@ -145,19 +136,16 @@
     top: -265px;
     z-index: -900;
 }
-
 .nav-section
 {
     margin-bottom: 158px;
 }
-
 .nav-section__title
 {
     font: bold 42px/62px "Montserrat";
     color: #25292d;
     margin-bottom: 16px;
 }
-
 .nav-section__description
 {
     width: 700px;
@@ -166,14 +154,12 @@
     margin: 0;
     margin-bottom: 42px;
 }
-
 .nav-section__tags
 {
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
 }
-
 .tags
 {
     width: 278px;
@@ -187,24 +173,20 @@
     margin-right: 30px;
     padding: 24px;
 }
-
 .tags:last-child
 {
     margin-right: 0;
 }
-
 .tags__title
 {
     color: #25292D;
     margin: 24px 0 12px 0;
 }
-
 .tags__text
 {
     font: normal 18px/30px "Montserrat";
     color: #4a525a;
 }
-
 .random-recipe
 {
     display: flex;

@@ -40,13 +40,6 @@
     cursor: pointer;
 }
 
-.nav-container__link:hover
-{
-    font-weight: 600;
-    color: #3a3c41;
-    transition: .15s all;
-}
-
 .nav-container__link.active
 {
     font-weight: 600;

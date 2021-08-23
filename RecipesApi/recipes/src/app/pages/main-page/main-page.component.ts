@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogOptionsComponent } from '../../components/dialog-options/dialog-options.component';
 import { RecipeDto } from 'src/app/dto/recipe.dto';
+import { RecipeService } from 'src/app/services/recipe.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -10,6 +12,7 @@ import { RecipeDto } from 'src/app/dto/recipe.dto';
 })
 export class MainPageComponent {
   public data!: RecipeDto[];
+  public title!: string;
   Categories: Category[] = [
     { name: 'Простые блюда', text: 'Время приготвления таких блюд не более 1 часа', photo: 'icon1.svg'},
     { name: 'Детское', text: 'Самые полезные блюда которые можно детям любого возраста', photo: 'icon2.svg' },
@@ -23,7 +26,7 @@ export class MainPageComponent {
     { name: 'Рыба'},
   ]
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private httpService: RecipeService, private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -31,6 +34,16 @@ export class MainPageComponent {
   openDialog() {
     this.dialog.open(DialogOptionsComponent);
   } 
+
+  openNewRecipe(){
+    this.router.navigate(['/new_recipe']);
+  }
+
+  async onProcess(){
+    await this.httpService.searchRecipe(this.title).then((data: RecipeDto[]) => {
+      this.data = data;
+    });;
+  }
 }
 export interface Category {
   name: string;

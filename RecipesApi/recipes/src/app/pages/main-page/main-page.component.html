@@ -4,7 +4,7 @@
         <h1 class="main-container__title">Готовь и делись рецептами</h1>
         <div class="main-container__description">Никаких кулинарных книг и блокнотов! Храни все любимые рецепты в одном месте.</div>
         <div class="main-container__functions">
-            <button class="function-button button" routerLinkActive="active" routerLink="/new_recipe" mat-button>Добавить рецепт</button>
+            <button class="function-button function-button_add-recipe" mat-button (click)="openNewRecipe()">Добавить рецепт</button>
             <button class="function-button" mat-button (click)="openDialog()">Войти</button>
         </div>
         <div class="nav-section">
@@ -30,12 +30,17 @@
             <h2 class="search-container__title">Поиск рецептов</h2>
             <p class="search-container__addiction">Введите примерное название блюда, а мы по тегам найдем его</p>
             <div class="search-container__search">
-                <input type="text" class="search-container__input" placeholder="Название Блюда....">
-                <input type="submit" class="search-container__submit" value="Поиск">
+                <input type="text" class="search-container__input" [(ngModel)]="title" placeholder="Название Блюда....">
+                <input type="submit" class="search-container__submit" (click)="onProcess()" value="Поиск">
             </div>
             <div class="search-container__nav">
                 <a *ngFor="let tag of Tags" class="nav-container__link" href="#"> {{tag.name}}</a>
             </div>
+        </div>
+        <div style="width: 1200px;
+        margin: 0 auto;
+        margin-bottom: 123px;">
+            <app-recipe class="search" *ngFor="let Recipe of data" [Recipe] = "Recipe"></app-recipe>
         </div>
     </div>
 </div>
