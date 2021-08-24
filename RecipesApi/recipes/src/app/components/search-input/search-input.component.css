@@ -19,7 +19,7 @@
 {
     display: flex; 
     justify-content: center; 
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .search-container__input

@@ -270,7 +270,7 @@
 {
     display: flex; 
     justify-content: center; 
-    margin: 64px 0 40px 0;
+    margin: 64px 0 24px;
 }
 
 .search-container__input

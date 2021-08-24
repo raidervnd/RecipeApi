@@ -10,6 +10,7 @@ import { RecipeService } from 'src/app/services/recipe.service';
 })
 export class CreateRecipePageComponent implements OnInit {
   public recipe!: RecipeDto;
+  public Recipe!: RecipeDto;
 
   constructor(private httpService: RecipeService, private router: Router) {}
 
@@ -17,7 +18,10 @@ export class CreateRecipePageComponent implements OnInit {
   }
 
   async sentRecipe(){
-    await this.httpService.addRecipe(this.recipe);
+    this.Recipe = this.recipe;
+    if (this.recipe.steps[0].description === "") { this.Recipe.steps = [];}
+    if (this.recipe.ingredients[0].title === "" || this.recipe.ingredients[0].description === "") { this.Recipe.ingredients = [] }
+    await this.httpService.addRecipe(this.Recipe);
     this.router.navigate(['/recipes']);
   }
   onSubmit(recipe: RecipeDto) {

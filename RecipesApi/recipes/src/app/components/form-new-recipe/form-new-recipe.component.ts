@@ -3,7 +3,6 @@ import { RecipeDto } from 'src/app/dto/recipe.dto';
 import { TagDto } from 'src/app/dto/tag.dto';
 import { StepDto } from 'src/app/dto/step.dto';
 import { IngridientDto } from 'src/app/dto/ingredient.dto';
-
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ElementRef, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -26,7 +25,6 @@ export class FormNewRecipeComponent implements OnInit {
   public newRecipe!: RecipeDto;
   public url: any;
   public urlRecipe: string = "../../../assets/addphoto.png";
-  @Output() valueChange  = new EventEmitter<RecipeDto>();
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -34,7 +32,8 @@ export class FormNewRecipeComponent implements OnInit {
   filteredFruits: Observable<string[]>;
   tags: string[] = [];
   allTags: string[] = [];
-
+  
+  @Output() valueChange  = new EventEmitter<RecipeDto>();
   @ViewChild('tagInput')tagInput!: ElementRef<HTMLInputElement>;
 
   constructor() {
@@ -76,7 +75,7 @@ export class FormNewRecipeComponent implements OnInit {
     return this.allTags.filter(tag => tag.toLowerCase().includes(filterValue));
   }
   
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.Ingredients = [{title: "", description: ""}]
     this.Steps = [{num: 1, description: ""}];
     this.newRecipe = {
@@ -86,8 +85,8 @@ export class FormNewRecipeComponent implements OnInit {
       likes: 0,
       saved: 0,
       tags: this.Tags,
-      steps: this.Steps[0]["description"] != ""? this.Steps: [],
-      ingredients: this.Ingredients[0]["title"] != ""? this.Ingredients: []
+      steps: this.Steps,
+      ingredients: this.Ingredients
     }
   }
 
