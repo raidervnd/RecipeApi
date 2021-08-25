@@ -3,6 +3,7 @@ import { TagDto } from './tag.dto';
 import { IngridientDto } from './ingredient.dto';
 
 export interface RecipeDto {
+    id?: number;
     name: string;
     description: string;
     photo?: string;

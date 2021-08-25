@@ -1,7 +1,7 @@
 <div class="recipe-container">
     <div class="recipe-container__title">
         <div class="title__wrapper">
-            <button mat-button class="back-button" routerLinkActive="active" routerLink="/">Назад</button>
+            <button mat-button class="back-button" (click)="goBeforePage()">Назад</button>
             <h1 class="title">Добавить новый рецепт</h1>
         </div>
         <button mat-button (click)="sentRecipe()" class="function-button">Опубликовать</button>

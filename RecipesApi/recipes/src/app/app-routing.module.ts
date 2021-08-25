@@ -11,8 +11,10 @@ const routes: Routes = [
     {path: 'main', component: MainPageComponent},
     {path: 'recipes', component: RecipesPageComponent},
     {path: 'new_recipe', component: CreateRecipePageComponent},
+    {path: 'recipes/new_recipe', component: CreateRecipePageComponent},
     {path: 'login', component: DialogElementComponent},
-    {path: 'favorites', component: FavoritesPageComponent}
+    {path: 'favorites', component: FavoritesPageComponent},
+    {path: 'change_recipe/:id', component: CreateRecipePageComponent}
 ];
 
 @NgModule({

@@ -293,12 +293,6 @@
     top: -40px;
 }
 
-.mat-form-field-underline,
-.mat-form-field-subscript-wrapper
-{
-    display: none!important;
-}
-
 .chip-list
 {
     padding-left: 0; 

@@ -21,7 +21,7 @@ export class RecipesPageComponent implements OnInit {
     });
   }
   openNewRecipe(){
-    this.router.navigate(['/new_recipe']);
+    this.router.navigate(['recipes/new_recipe']);
   }
 
 }
