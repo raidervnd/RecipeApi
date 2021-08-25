@@ -1,12 +1,8 @@
 <div class="nav-section">
-  <div class="nav-section__tags">
-    <ul style="list-style-type: none; display: flex; padding: 0;">
-      <li class="tags" *ngFor="let categoty of Categories">
-        <a class="tags__wrapper" href="#">
-          <img src="../../assets/{{categoty.photo}}" alt="#">
-          <h3 class="tags__title">{{categoty.name}}</h3>
+    <div class="nav-section__tags">
+        <a class="tags" *ngFor="let categoty of Categories" href="#">
+            <img src="../../assets/{{categoty.photo}}" alt="#">
+            <h3 class="tags__title">{{categoty.name}}</h3>
         </a>
-      </li>
-    </ul>
-  </div>
+    </div>
 </div>

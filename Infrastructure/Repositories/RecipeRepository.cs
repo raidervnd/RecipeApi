@@ -11,10 +11,27 @@ namespace Infrastructure.Repositories
         public RecipeRepository( RecipesApiDbContext dbContext )
             : base( dbContext )
         { }
+
+        public void AddRecipe(Recipe recipe)
+        {
+            Entities.Add(recipe);
+        }
+
+        public IQueryable<Recipe> GetDetachedQuery()
+        {
+            return Entities
+                .Include(r => r.Steps)
+                .Include(r => r.Tags)
+                .Include(r => r.Ingredients)
+                .AsNoTracking();
+        }
+
         public List<Recipe> GetAll()
         {
             return Entities
                 .Include( r => r.Steps )
+                .Include( r => r.Tags)
+                .Include( r => r.Ingredients)
                 .ToList();
         }
 
@@ -22,7 +39,9 @@ namespace Infrastructure.Repositories
         {
             return Entities
                 .Include( r => r.Steps )
-                .FirstOrDefault( r  => r.Id == id  );
+                .Include( r => r.Tags)
+                .Include( r => r.Ingredients)
+                .FirstOrDefault( r  => r.Id == id );
         }
     }
 }

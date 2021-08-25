@@ -6,11 +6,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: .15s all;
 }
 
 .nav-container__link
 {
 
+    cursor: pointer;
     margin-left: 5px;
     margin-right: 20px;
     width: 100px;
@@ -38,19 +40,8 @@
     cursor: pointer;
 }
 
-/* .nav-container__login::before
-{
-    content: url(../../assets/Login.svg);
-    position: absolute;
-    top: -8px;
-    left: -60px;
-    width: 38px;
-    height: 38px;
-} */
-
-.nav-container__link:hover
+.nav-container__link.active
 {
     font-weight: 600;
     color: #3a3c41;
-    transition: .15s all;
 }

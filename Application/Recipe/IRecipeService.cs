@@ -6,7 +6,7 @@ namespace Application.Recipe
     {
         List<Recipe> GetAll();
         Recipe GetById(int id);
-
-        //void Create()
+        void AddRecipe(Recipe recipe);
+        IReadOnlyList<Recipe> FindRecipes(string searchText);
     }
 }

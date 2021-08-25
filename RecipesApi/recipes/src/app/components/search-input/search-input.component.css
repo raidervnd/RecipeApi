@@ -19,6 +19,7 @@
 {
     display: flex; 
     justify-content: center; 
+    margin-bottom: 10px;
 }
 
 .search-container__input
@@ -75,4 +76,11 @@
     font-weight: 600;
     color: #3a3c41;
     transition: .15s all;
+}
+
+.container
+{
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 123px;
 }

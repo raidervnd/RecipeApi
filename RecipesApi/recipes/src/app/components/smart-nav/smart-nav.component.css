@@ -14,7 +14,6 @@
 .tags
 {
     width: 278px;
-
     text-decoration: none;
     background: #ffffff;
     color: #25292D;
@@ -24,11 +23,6 @@
     transition: all ease-in-out 250ms;
     margin-right: 30px;
     padding: 24px;
-}
-
-.tags__wrapper
-{
-    text-decoration: none;
 }
 
 .tags:last-child
