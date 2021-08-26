@@ -39,8 +39,9 @@ namespace RecipesApi.Controllers
         }
 
         [HttpPost]
-        public void AddRecipe(Recipe recipe)
+        public void AddRecipe(RecipeDto recipeDto)
         {
+            Recipe recipe = _recipeDtoConverter.ConvertFromDto(recipeDto);
             _recipeService.AddRecipe(recipe);
             _unitOfWork.Commit();
         }

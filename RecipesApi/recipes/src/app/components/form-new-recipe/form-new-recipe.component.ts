@@ -10,6 +10,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
   selector: 'app-form-new-recipe',
@@ -35,8 +36,9 @@ export class FormNewRecipeComponent implements OnInit {
   
   @Output() valueChange  = new EventEmitter<RecipeDto>();
   @ViewChild('tagInput')tagInput!: ElementRef<HTMLInputElement>;
+  public photo: any;
 
-  constructor() {
+  constructor(private httpService: RecipeService) {
     this.filteredFruits = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
@@ -88,6 +90,9 @@ export class FormNewRecipeComponent implements OnInit {
       steps: this.Steps,
       ingredients: this.Ingredients
     }
+      this.httpService.SaveFile(this.photo).then((data: any) => {
+        console.log(data);
+      });
   }
 
   onSubmit() {
@@ -115,13 +120,14 @@ export class FormNewRecipeComponent implements OnInit {
   }
 
   onSelectFile(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      reader.onload = (event: any) => {
-        this.url = event.target.result;
-        this.urlRecipe = this.url;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    } 
+    // if (event.target.files && event.target.files[0]) {
+    //   var reader = new FileReader();
+    //   reader.onload = (event: any) => {
+    //     this.url = event.target.result;
+    //     this.urlRecipe = this.url;
+    //   }
+    //   reader.readAsDataURL(event.target.files[0]);
+    // }
+    
   }
 }

@@ -4,6 +4,7 @@
             <img src="{{urlRecipe}}" class="img">
             <input 
               type="file" 
+              [(ngModel)]="photo"
               style="appearance: none; display: none;" 
               (change)="onSelectFile($event)">
         </label>

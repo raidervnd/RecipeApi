@@ -11,6 +11,7 @@ namespace Infrastructure.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new RecipeConfiguration());
+            builder.ApplyConfiguration(new FileConfiguration());
         }
     }
 }

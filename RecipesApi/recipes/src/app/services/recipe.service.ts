@@ -20,4 +20,7 @@ export class RecipeService {
   async searchRecipe(recipe: string): Promise<any> {
     return this._http.get<RecipeDto[]>('api/Recipes/' + recipe).toPromise();
   }
+  async SaveFile(file: any): Promise<any> {
+    return this._http.post<any>('api/File', file).toPromise();
+  }
 }
