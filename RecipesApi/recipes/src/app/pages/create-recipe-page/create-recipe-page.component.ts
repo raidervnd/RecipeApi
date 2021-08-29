@@ -20,19 +20,19 @@ export class CreateRecipePageComponent implements OnInit {
 
   async sentRecipe(){
     if (this.recipe != undefined) {
-    this.Recipe = this.recipe;
-    if (this.recipe.steps[0].description == "") { this.Recipe.steps = [];}
-    if (this.recipe.ingredients[0].title === "" || this.recipe.ingredients[0].description === "") { this.Recipe.ingredients = [] }
-    if (this.recipe.name !== "" && this.recipe.description !== "") {
-      await this.httpService.addRecipe(this.Recipe);
-      this.router.navigate(['/recipes']);
-    }}
+      this.Recipe = this.recipe;
+      if (this.recipe.steps[0].description == "") { this.Recipe.steps = [];}
+      if (this.recipe.ingredients[0].title === "" || this.recipe.ingredients[0].description === "") { this.Recipe.ingredients = [] }
+      if (this.recipe.name !== "" && this.recipe.description !== "") {
+        await this.httpService.addRecipe(this.Recipe);
+        this.router.navigate(['/recipes']);
+      }
+    }
   }
   onSubmit(recipe: RecipeDto) {
     this.recipe = recipe;
   }
   goBeforePage(){
-    //this.router.navigate(['/']);
     this.location.back();
   }
 }

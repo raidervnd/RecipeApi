@@ -43,5 +43,15 @@ namespace Infrastructure.Repositories
                 .Include( r => r.Ingredients)
                 .FirstOrDefault( r  => r.Id == id );
         }
+
+        public void DeleteRecipe(Recipe recipe)
+        {
+            Entities.Remove(recipe);
+        }
+
+        //public void UpdateRecipe(Recipe recipe)
+        //{
+        //    Entities.Update(recipe);
+        //}
     }
 }

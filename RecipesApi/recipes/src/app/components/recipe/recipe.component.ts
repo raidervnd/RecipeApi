@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeDto } from 'src/app/dto/recipe.dto';
+import { RecipeService } from 'src/app/services/recipe.service';
 
 @Component({
   selector: 'app-recipe',
@@ -11,15 +12,19 @@ import { RecipeDto } from 'src/app/dto/recipe.dto';
 export class RecipeComponent implements OnInit {
 
   @Input() Recipe!: RecipeDto;
+  public data?: RecipeDto;
+  public recipeId: number = 0;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private httpService: RecipeService, private route: ActivatedRoute) { 
+    this.route.queryParams.subscribe(params => {
+      this.recipeId = params['id']});
+  }
 
   ngOnInit(): void {
   }
 
-  goToRecipeId(recipeId: number| undefined)
+  goToRecipeId(recipeId?: number)
   {
-    this.router.navigate(['/change_recipe/:id', {id: recipeId}])
+    this.router.navigate(['/recipes/recipe', {id: recipeId}])
   }
-
 }

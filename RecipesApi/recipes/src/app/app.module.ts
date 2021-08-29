@@ -22,10 +22,11 @@ import { DialogOptionsComponent } from './components/dialog-options/dialog-optio
 import { RecipeService } from './services/recipe.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatInputModule} from '@angular/material/input';
-import {MatListModule} from '@angular/material/list';
-import {ReactiveFormsModule} from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RecipeInfoComponent } from './pages/recipe-info/recipe-info.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     RecipeComponent,
     MainPageComponent,
     DialogOptionsComponent,
+    RecipeInfoComponent,
   ],
   imports: [
     BrowserModule,

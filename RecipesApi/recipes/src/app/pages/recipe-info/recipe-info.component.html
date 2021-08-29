@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="container-title">
+        <div>
+            <button mat-button class="back-button" (click)="goBeforePage()">Назад</button>
+            <h1 class="recipe-title">{{Recipe.name}}</h1>
+        </div>
+        <div class="buttons">
+          <button mat-button (click)="deleteThisRecipe()">Удалить</button>
+          <button mat-button (click)="updateThisRecipe()" class="function-button">Редактировать</button>
+        </div>
+    </div>
+    <app-recipe [Recipe] = "Recipe"></app-recipe>
+</div>
+<div class="extra-container">
+    <div class="ingedient-box">
+        <h3 class="title-ingredient">Ингридиенты</h3>
+        <div class="ingedient-box__wrapper" *ngFor="let ingredient of Recipe.ingredients">
+          <div class="input-data_ingredient">{{ingredient.title}}</div>
+          <div class="input-text">{{ingredient.description}}</div>
+        </div>
+    </div>
+    <div class="step-box">
+      <div class="step-box__wrapper" *ngFor="let step of Recipe.steps">
+          <div class="title">Шаг {{step.num}}</div>
+          <div class="input-data_step">{{step.description}}</div>
+      </div>
+    </div>
+</div>

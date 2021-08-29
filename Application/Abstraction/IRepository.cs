@@ -7,5 +7,6 @@ namespace Application.Abstraction
         void Add(T entity);
         void AddRange(List<T> entities);
         void Remove(T entity);
+        void Update(T entity);
     }
 }

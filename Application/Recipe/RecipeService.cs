@@ -30,8 +30,26 @@ namespace Application.Recipe
 
         public IReadOnlyList<Recipe> FindRecipes(string searchText)
         {
-            return _recipeRepository.GetDetachedQuery().Where(r => EF.Functions.Like(r.Name, "%" + searchText + "%")).ToList();
+            //var recipes = _recipeRepository.GetDetachedQuery().Where(r => r.Tags.Any(tag => tag.Title == searchText)).ToList();
+            //List<Recipe> recipes = new List<Recipe>();
+            List<Recipe> recipes = _recipeRepository.GetDetachedQuery().Where(r => EF.Functions.Like(r.Name, "%" + searchText + "%")).ToList();
+            recipes.AddRange( _recipeRepository.GetDetachedQuery().Where(r => r.Tags.Any(r => EF.Functions.Like(r.Title, searchText))).ToList());
+            return recipes;
 
         }
+
+        public void DeleteRecipe(int id)
+        {
+            Recipe recipe = _recipeRepository.GetById(id);
+            _recipeRepository.DeleteRecipe(recipe);
+
+        }
+
+        //public void UpdateRecipe(int id, Recipe recipe)
+        //{
+        //    //Recipe recipeOld = _recipeRepository.GetById(id);
+        //    _recipeRepository.UpdateRecipe(recipe);
+
+        //}
     }
 }

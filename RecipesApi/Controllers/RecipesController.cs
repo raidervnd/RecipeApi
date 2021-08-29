@@ -38,11 +38,35 @@ namespace RecipesApi.Controllers
             return _recipeService.FindRecipes(searchText).Select(_recipeDtoConverter.ConvertToDto).ToArray();
         }
 
-        [HttpPost]
-        public void AddRecipe(Recipe recipe)
+        [HttpGet("recipe/{id}")]
+        public RecipeDto GetRecipeById(int id)
         {
+            Recipe recipe = _recipeService.GetById(id);
+            return _recipeDtoConverter.ConvertToDto(recipe);
+        }
+
+        [HttpPost]
+        public void AddRecipe(RecipeDto recipeDto)
+        {
+            Recipe recipe = (_recipeDtoConverter.ConvertFromDto(recipeDto));
             _recipeService.AddRecipe(recipe);
             _unitOfWork.Commit();
         }
+
+        //[HttpPut("{id}")]
+        //public void Put(int id, RecipeDto recipeDto)
+        //{
+        //    Recipe recipe = (_recipeDtoConverter.ConvertFromDto(recipeDto));
+        //    _recipeService.UpdateRecipe(recipe);
+        //    _unitOfWork.Commit();
+        //}
+
+        [HttpDelete("{id}")]
+        public void DeleteRecipe(int id)
+        {
+            _recipeService.DeleteRecipe(id);
+            _unitOfWork.Commit();
+        }
+
     }
 }
