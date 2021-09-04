@@ -2,8 +2,8 @@
     <h1 class="page-title">Рецепты</h1>
     <button (click)="openNewRecipe()" mat-button class="function-button">Добавить рецепт</button>
 </div>
-<app-smart-nav></app-smart-nav>
 <app-search-input></app-search-input>
 <div class="container">
     <app-recipe *ngFor="let recipe of data" [Recipe] = "recipe"></app-recipe>
+    <button mat-button class="function-button_extra">Загрузить ещё</button>
 </div>

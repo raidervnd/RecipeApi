@@ -1,3 +1,11 @@
+<div class="nav-section">
+    <div class="nav-section__tags">
+        <a class="tags" *ngFor="let categoty of Categories">
+            <img src="../../assets/{{categoty.photo}}" alt="#">
+            <h3 class="tags__title" (click)="onTagProcess(categoty.name)">{{categoty.name}}</h3>
+        </a>
+    </div>
+</div>
 <div class="page-wrapper">
     <div class="page-wrapper__title">Поиск рецепта</div>
     <div class="search-container">
@@ -6,7 +14,7 @@
             <input type="submit" class="search-container__submit" (click)="onProcess()" value="Поиск">
         </div>
         <div class="search-container__nav">
-            <a *ngFor="let tag of Tags" class="nav-container__link" href="#"> {{tag.name}}</a>
+            <a *ngFor="let tag of Tags" class="nav-container__link" (click)="onTagProcess(tag.name)"> {{tag.name}}</a>
         </div>
     </div>
 </div>

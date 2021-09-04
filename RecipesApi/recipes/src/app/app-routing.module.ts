@@ -5,6 +5,7 @@ import { DialogElementComponent } from './components/dialog-element/dialog-eleme
 import { RecipesPageComponent } from './pages/recipes-page/recipes-page.component';
 import { CreateRecipePageComponent } from './pages/create-recipe-page/create-recipe-page.component';
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
+import { RecipeInfoComponent } from './pages/recipe-info/recipe-info.component';
 
 const routes: Routes = [
     {path: '', component: MainPageComponent},
@@ -14,7 +15,7 @@ const routes: Routes = [
     {path: 'recipes/new_recipe', component: CreateRecipePageComponent},
     {path: 'login', component: DialogElementComponent},
     {path: 'favorites', component: FavoritesPageComponent},
-    {path: 'change_recipe/:id', component: CreateRecipePageComponent}
+    {path: 'recipes/recipe', component: RecipeInfoComponent}
 ];
 
 @NgModule({

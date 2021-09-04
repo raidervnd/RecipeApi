@@ -9,5 +9,7 @@ namespace Application.Recipe
         public Recipe GetById(int id);
         public void AddRecipe(Recipe recipe);
         public IQueryable<Recipe> GetDetachedQuery();
+        public void DeleteRecipe(Recipe recipe);
+        public void UpdateRecipe(Recipe recipe);
     }
 }

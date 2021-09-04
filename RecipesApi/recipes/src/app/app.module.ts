@@ -11,7 +11,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RecipesPageComponent } from '../app/pages/recipes-page/recipes-page.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
-import { SmartNavComponent } from './components/smart-nav/smart-nav.component';
 import { DialogLoginComponent } from './components/dialog-login/dialog-login.component';
 import { DialogSignupComponent } from './components/dialog-signup/dialog-signup.component';
 import { CreateRecipePageComponent } from './pages/create-recipe-page/create-recipe-page.component';
@@ -22,10 +21,11 @@ import { DialogOptionsComponent } from './components/dialog-options/dialog-optio
 import { RecipeService } from './services/recipe.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatInputModule} from '@angular/material/input';
-import {MatListModule} from '@angular/material/list';
-import {ReactiveFormsModule} from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RecipeInfoComponent } from './pages/recipe-info/recipe-info.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     FooterComponent,
     RecipesPageComponent,
     SearchInputComponent,
-    SmartNavComponent,
     DialogLoginComponent,
     DialogSignupComponent,
     CreateRecipePageComponent,
@@ -43,6 +42,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     RecipeComponent,
     MainPageComponent,
     DialogOptionsComponent,
+    RecipeInfoComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,7 @@ export class FormNewRecipeComponent implements OnInit {
   public Ingredients: IngridientDto[] = [];
   public Tags: TagDto[] = [];
   public newRecipe!: RecipeDto;
-  public url: any;
+  public url: any = "";
   public urlRecipe: string = "../../../assets/addphoto.png";
   selectable = true;
   removable = true;
@@ -37,6 +37,7 @@ export class FormNewRecipeComponent implements OnInit {
   @Output() valueChange  = new EventEmitter<RecipeDto>();
   @ViewChild('tagInput')tagInput!: ElementRef<HTMLInputElement>;
   public photo: any;
+  public content: any;
 
   constructor(private httpService: RecipeService) {
     this.filteredFruits = this.tagCtrl.valueChanges.pipe(
@@ -90,9 +91,6 @@ export class FormNewRecipeComponent implements OnInit {
       steps: this.Steps,
       ingredients: this.Ingredients
     }
-      this.httpService.SaveFile(this.photo).then((data: any) => {
-        console.log(data);
-      });
   }
 
   onSubmit() {
@@ -120,14 +118,6 @@ export class FormNewRecipeComponent implements OnInit {
   }
 
   onSelectFile(event: any) {
-    // if (event.target.files && event.target.files[0]) {
-    //   var reader = new FileReader();
-    //   reader.onload = (event: any) => {
-    //     this.url = event.target.result;
-    //     this.urlRecipe = this.url;
-    //   }
-    //   reader.readAsDataURL(event.target.files[0]);
-    // }
-    
-  }
+    this.url = event.target.files[0];
+  } 
 }

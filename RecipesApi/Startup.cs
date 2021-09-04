@@ -1,5 +1,4 @@
 using Application.Abstraction;
-using Application.File;
 using Application.Recipe;
 using Infrastructure.Common;
 using Infrastructure.Context;
@@ -28,9 +27,7 @@ namespace RecipesApi
         {
             services.AddControllers();
             services.AddScoped<IRecipeService, RecipeService>();
-            services.AddScoped<IFileService, FileService>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
-            services.AddScoped<IFileRepository, FileRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork<RecipesApiDbContext>>();
             services.AddScoped<IRecipeDtoConverter, RecipeDtoConverter>();
             services.AddDbContext<RecipesApiDbContext>( c =>

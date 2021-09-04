@@ -39,6 +39,7 @@
 
 .recipe__tag
 {
+    cursor: pointer;
     text-decoration: none;
     font-family: Montserrat;
     font-style: normal;

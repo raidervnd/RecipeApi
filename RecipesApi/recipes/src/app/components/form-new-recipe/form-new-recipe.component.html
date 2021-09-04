@@ -1,10 +1,20 @@
 <div class="recipe-container">
     <div class="recipes-list-container">
+        <!-- <form asp-action="UploadImage" 
+          asp-controller="Recipes" 
+          method="post" 
+          enctype="multipart/form-data">
+            <input type="file" id="file1" 
+              name="file1" 
+[(ngModel)]="File.content"
+              
+              multiple="multiple" />
+            <button type="submit">Upload File(s)</button>
+        </form> -->
         <label class="recipe-image">
             <img src="{{urlRecipe}}" class="img">
             <input 
               type="file" 
-              [(ngModel)]="photo"
               style="appearance: none; display: none;" 
               (change)="onSelectFile($event)">
         </label>

@@ -5,6 +5,11 @@ using System.Linq;
 using RecipesApi.Convertes;
 using Application.Abstraction;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Threading.Tasks;
+using System.Drawing;
+using System;
 
 namespace RecipesApi.Controllers
 {
@@ -38,11 +43,33 @@ namespace RecipesApi.Controllers
             return _recipeService.FindRecipes(searchText).Select(_recipeDtoConverter.ConvertToDto).ToArray();
         }
 
+        [HttpGet("recipe/{id}")]
+        public RecipeDto GetRecipeById(int id)
+        {
+            Recipe recipe = _recipeService.GetById(id);
+            return _recipeDtoConverter.ConvertToDto(recipe);
+        }
+
         [HttpPost]
         public void AddRecipe(RecipeDto recipeDto)
         {
             Recipe recipe = _recipeDtoConverter.ConvertFromDto(recipeDto);
             _recipeService.AddRecipe(recipe);
+            _unitOfWork.Commit();
+        }
+
+        [HttpDelete("{id}")]
+        public void DeleteRecipe(int id)
+        {
+            _recipeService.DeleteRecipe(id);
+            _unitOfWork.Commit();
+        }
+
+        [HttpPut("edit")]
+        public void Put([FromBody] RecipeDto recipeDto)
+        {
+            Recipe recipe = _recipeDtoConverter.ConvertFromDto(recipeDto);
+            _recipeService.UpdateRecipe(recipe);
             _unitOfWork.Commit();
         }
     }

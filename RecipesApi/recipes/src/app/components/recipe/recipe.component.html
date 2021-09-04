@@ -3,7 +3,7 @@
     <div class="recipe">
         <div class="recipe__function">
             <div class="recipe__tags">
-                <a *ngFor="let tag of Recipe.tags" class="recipe__tag" href="#">{{tag.title}}</a>
+                <a *ngFor="let tag of Recipe.tags" class="recipe__tag">{{tag.title}}</a>
             </div>
             <div class="recipe__relation">
                 <button mat-button class="recipe__button save">
@@ -14,7 +14,7 @@
                     {{Recipe.likes}}</button>
             </div>
         </div>
-        <a (click)="goToRecipeId(Recipe.id)" style="text-decoration: none;">
+        <a (click)="goToRecipeId(Recipe.id)" style="text-decoration: none; cursor: pointer;">
             <div class="recipe__title">{{Recipe.name}}</div>
             <div class="recipe__description">{{Recipe.description}}</div>
         </a>
