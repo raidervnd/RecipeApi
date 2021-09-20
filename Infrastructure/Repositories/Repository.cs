@@ -24,5 +24,10 @@ namespace Infrastructure.Repositories
         {
             _dbContext.Remove(entity);
         }
+
+        public void Update(T entity)
+        {
+            _dbContext.Update(entity);
+        }
     }
 }

@@ -2,7 +2,6 @@
 {
     margin: 0 auto;
     width: 1440px;
-    /* height: 2719px; */
     position: relative;
 }
 
@@ -19,12 +18,11 @@
 .nav-container__link
 {
     margin: auto 20px auto 5px;
-    width: 100px;
     display: inline-block;
     font: 400 18px/22px "Montserrat";
     text-decoration: none;
     color: #9196a1;
-    transition: .15s all;
+    cursor: pointer;
 }
 
 .nav-container__link_recipes
@@ -52,13 +50,6 @@
     left: -60px;
     width: 38px;
     height: 38px;
-}
-
-.nav-container__link:hover
-{
-    font-weight: 600;
-    color: #3a3c41;
-    transition: .15s all;
 }
 
 .main-container
@@ -196,6 +187,7 @@
 
 .random-recipe__article
 {
+    cursor: pointer;
     margin: 100px 0 0 73px;
     text-decoration: none;
     width: 513px;
@@ -220,6 +212,7 @@
 
 .random-recipe__title
 {
+    margin-top: 80px;
     font: 700 42px/60px "Montserrat";
     color: #25292D;
 }
@@ -230,7 +223,7 @@
     position: absolute;
     width: 80px;
     height: 81px;
-    top: -60px;
+    top: -30px;
 }
 
 .random-recipe__article::after
@@ -238,8 +231,8 @@
     content: url(../../../assets/String.svg);
     position: absolute;
     width: 101px;
-    top: -74px;
     left: -10px;
+    top: -44px;
 }
 
 .random-recipe__text
@@ -307,29 +300,9 @@
     margin: 0 auto;
 }
 
-.footer
+.container 
 {
-    background: #FBF9F4;
-    height: 113px;
-}
-
-.footer__wrapper
-{
-    margin: 0 auto;
-    width: 1440px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.footer__items
-{
-    margin-top: 37px;
-    margin-left: 120px;
-    font: 700 32px/39px "Montserrat";
-}
-
-.footer__items:last-child
-{
-    margin: 45px 119px 0 0;
-    font: 500 20px/24px "Montserrat";
+    width: 1200px; 
+    margin: 0 auto; 
+    margin-bottom: 123px;
 }

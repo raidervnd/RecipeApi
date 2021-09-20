@@ -21,9 +21,9 @@ export class MainPageComponent {
   ];
   Tags: Tag[] = [
     { name: 'Мясо'},
-    { name: 'Деликатесы'},
-    { name: 'Пироги'},
-    { name: 'Рыба'},
+    { name: 'Десерты'},
+    { name: 'Мороженое'},
+    { name: 'Завтрак'},
   ]
 
   constructor(public dialog: MatDialog, private httpService: RecipeService, private router: Router) {}
@@ -41,6 +41,12 @@ export class MainPageComponent {
 
   async onProcess(){
     await this.httpService.searchRecipe(this.title).then((data: RecipeDto[]) => {
+      this.data = data;
+    });;
+  }
+
+  async onProcessTag(tag: any) {
+    await this.httpService.searchRecipe(tag).then((data: RecipeDto[]) => {
       this.data = data;
     });;
   }
